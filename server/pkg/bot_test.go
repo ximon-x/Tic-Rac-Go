@@ -66,7 +66,7 @@ func TestCheckWinVertical(t *testing.T) {
 
 func TestCheckWinDiagonal(t *testing.T) {
 	board := [][]int{
-		{1, 0, 0},
+		{1, 0, 1},
 		{0, 0, 0},
 		{0, 0, 0},
 	}

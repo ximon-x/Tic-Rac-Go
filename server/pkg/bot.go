@@ -60,8 +60,8 @@ func CheckWin(board [][]int) bool {
 		return false
 	}
 
-	var right_won bool
-	var left_won bool
+	var right_won = true
+	var left_won = true
 
 	for i := 0; i < n; i++ {
 		if board[0][0] != board[i][i] && board[0][0] != 0 {
@@ -73,7 +73,7 @@ func CheckWin(board [][]int) bool {
 		}
 	}
 
-	if right_won || left_won {
+	if right_won && board[0][0] != 0 || left_won && board[0][n-1] != 0 {
 		return true
 	} else {
 		return false
