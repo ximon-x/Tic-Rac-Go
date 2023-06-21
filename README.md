@@ -1,6 +1,6 @@
 # Tic-Rac-Go
 
-[TUI.webm](https://github.com/ximon-x/Tic-Rac-Go/assets/56292632/5393964d-4574-4ca5-8c4f-d6fc66d976f6)
+[TUI.webm](https://github.com/ximon-x/Tic-Rac-Go/assets/56292632/61c03bb0-43ba-47be-9c04-5ea785a4c88b)
 
 A Simple TUI application built using Ratatui, Rust and Go.
 
