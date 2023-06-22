@@ -1,39 +1,11 @@
-mod ui;
+use crate::tui::entry::terminal;
+use crate::tui::game::{Game, Player};
 
-use serde::{Deserialize, Serialize};
 use std::io::{self, Error, ErrorKind};
 
+pub mod tui;
+
 use figlet_rs::FIGfont;
-use ui::terminal;
-
-#[derive(PartialEq, Eq, Serialize, Deserialize, Debug)]
-enum Player {
-    X,
-    O,
-}
-
-#[derive(Serialize, Deserialize, Debug)]
-pub struct Game {
-    board: Vec<Vec<u8>>,
-    player: Player,
-    game_over: bool,
-}
-
-impl Game {
-    fn new(player: Option<Player>, dim: usize) -> Game {
-        let rows = vec![0; dim];
-        let board = vec![rows; dim];
-
-        let player = player.unwrap_or(Player::X);
-        let game_over = false;
-
-        Game {
-            board,
-            player,
-            game_over,
-        }
-    }
-}
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
     let stdin = io::stdin();

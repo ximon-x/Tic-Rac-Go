@@ -10,9 +10,10 @@ func TestCheckWinEmpty(t *testing.T) {
 	board := [][]int{
 		{0, 0, 0},
 		{0, 0, 0},
-		{0, 0, 0}}
+		{0, 0, 0},
+	}
 
-	if CheckWin(board) {
+	if checkWin(board) {
 		t.Errorf("Expected false, got true for 3x3")
 	}
 }
@@ -24,7 +25,7 @@ func TestCheckWinHorizontal(t *testing.T) {
 		{0, 0, 0},
 	}
 
-	if !CheckWin(board) {
+	if !checkWin(board) {
 		t.Errorf("Expected true, got false for 3x3")
 	}
 
@@ -35,7 +36,7 @@ func TestCheckWinHorizontal(t *testing.T) {
 		{2, 2, 2, 2},
 	}
 
-	if !CheckWin(board) {
+	if !checkWin(board) {
 		t.Errorf("Expected true, got false for 4x4")
 	}
 }
@@ -47,7 +48,7 @@ func TestCheckWinVertical(t *testing.T) {
 		{1, 0, 0},
 	}
 
-	if !CheckWin(board) {
+	if !checkWin(board) {
 		t.Errorf("Expected true, got false for 3x3")
 	}
 
@@ -58,10 +59,9 @@ func TestCheckWinVertical(t *testing.T) {
 		{1, 0, 0, 2},
 	}
 
-	if !CheckWin(board) {
+	if !checkWin(board) {
 		t.Errorf("Expected true, got false for 4x4")
 	}
-
 }
 
 func TestCheckWinDiagonal(t *testing.T) {
@@ -71,7 +71,7 @@ func TestCheckWinDiagonal(t *testing.T) {
 		{0, 0, 0},
 	}
 
-	if CheckWin(board) {
+	if checkWin(board) {
 		t.Errorf("Expected false, got true for 3x3")
 	}
 
@@ -81,7 +81,7 @@ func TestCheckWinDiagonal(t *testing.T) {
 		{0, 0, 1},
 	}
 
-	if !CheckWin(board) {
+	if !checkWin(board) {
 		t.Errorf("Expected true, got false for 3x3")
 	}
 
@@ -92,7 +92,7 @@ func TestCheckWinDiagonal(t *testing.T) {
 		{1, 0, 0, 1},
 	}
 
-	if !CheckWin(board) {
+	if !checkWin(board) {
 		t.Errorf("Expected true, got false for 4x4")
 	}
 }
