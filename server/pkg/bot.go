@@ -1,19 +1,21 @@
 package pkg
 
 import (
-	"math/rand"
-	"time"
+	"crypto/rand"
+	"math/big"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 func makeMove(board *[][]int, player string) ([]int, error) {
-	// Do not use math/rand in production, it is not cryptographically secure.
-	// Use crypto/rand instead.
-	rand.Seed(time.Now().UnixNano())
-
 	var NoOpenSpotsError error
 	var openSpots [][]int
+
+	max := big.NewInt(100000000)
+	randInt, err := rand.Int(rand.Reader, max)
+	if err != nil {
+		return nil, NoOpenSpotsError
+	}
 
 	for i, row := range *board {
 		for j, cell := range row {
@@ -27,7 +29,7 @@ func makeMove(board *[][]int, player string) ([]int, error) {
 		return nil, NoOpenSpotsError
 	}
 
-	move := openSpots[rand.Intn(len(openSpots))]
+	move := openSpots[randInt.Int64()%int64(len(openSpots))]
 
 	if player == "X" {
 		(*board)[move[0]][move[1]] = 2
