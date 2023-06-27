@@ -50,7 +50,12 @@ pub fn handle_input(
 
                 let l = game.board.len() - 1;
 
-                if game.board[r][c] != 0 || r > l || c > l {
+                if r > l || c > l {
+                    input.reset();
+                    return Ok(2);
+                }
+
+                if game.board[r][c] != 0 {
                     input.reset();
                     return Ok(2);
                 }
