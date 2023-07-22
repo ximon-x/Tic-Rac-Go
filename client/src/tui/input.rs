@@ -33,22 +33,23 @@ pub fn handle_input(
 
             KeyCode::Enter => {
                 // Validate input
-                if input.value().is_empty() {
-                    return Ok(2);
-                }
-
-                if input.value().len() > 2 {
+                if input.value().len() != 2 {
                     input.reset();
                     return Ok(2);
                 }
 
-                let c = (input.value().chars().nth(0).unwrap() as u8 - b'A')
-                    as usize;
-                let r = (input.value().chars().nth(1).unwrap() as i32
-                    - 0x30
-                    - 1) as usize;
-
                 let l = game.board.len() - 1;
+
+                let file_char = input.value().chars().next().unwrap();
+                let rank_char = input.value().chars().last().unwrap();
+
+                if !file_char.is_alphabetic() || !rank_char.is_digit(10) {
+                    input.reset();
+                    return Ok(2);
+                }
+
+                let r = (file_char as u8 - 'A' as u8) as usize;
+                let c = (rank_char as u8 - '1' as u8) as usize;
 
                 if r > l || c > l {
                     input.reset();
